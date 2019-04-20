@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<c3p0-config>
+	<default-config> 
+		<property name="jdbcUrl">jdbc:sqlserver://localhost:1433;DataBaseName=customers</property>
+		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="user">sa</property>
+		<property name="password">990820</property>
+		
+		<property name="acquireIncrement">3</property>
+		<property name="initialPoolSize">10</property>
+		<property name="minPoolSize">2</property>
+		<property name="maxPoolSize">10</property>
+	</default-config>
+</c3p0-config>
