@@ -1,0 +1,2 @@
+import python_02_function1
+python_02_function1.mutiple_table()
