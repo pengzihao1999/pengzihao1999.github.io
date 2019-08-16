@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="WebSocketwidechat"
+  id="myeclipse.1561445058280"
+  context-root="/WebSocketwidechat"
+  j2ee-spec="5.0"
+  archive="WebSocketwidechat.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

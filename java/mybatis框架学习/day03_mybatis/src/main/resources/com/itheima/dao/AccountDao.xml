@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace+id 确定唯一方法-->
+<mapper namespace="com.itheima.dao.AccountDao">
+    <!--定义map映射-->
+    <!--type属性表示对象,id表示唯一标识-->
+    <resultMap id="AccountMap" type="Account">
+    <!-- property属性名称，column数据库字段值 -->
+        <id property="id" column="ID"></id>
+        <result property="uid" column="UID"></result>
+        <result property="money" column="MONEY"></result>
+        <!--property是指User的属性,javaType是对应的JAVA类-->
+        <association property="user" javaType="user">
+            <id property="id" column="id"></id>
+            <result property="username" column="username"></result>
+            <result property="birthday" column="birthday"></result>
+            <result property="sex" column="sex"></result>
+            <result property="address" column="address"></result>
+        </association>
+    </resultMap>
+    <select id="selectAccount" resultType="AccountWithUser">
+        <!--写出sql语句，封装到对应的属性中-->
+        SELECT username,address,account.*
+        FROM USER,account
+        WHERE User.`id`=account.`UID`
+    </select>
+    <select id="selectAccountEx" resultMap="AccountMap">
+        <!--写出sql语句，封装到对应的属性中-->
+        SELECT user.*,account.*
+        FROM USER,account
+        WHERE User.`id`=account.`UID`
+    </select>
+
+</mapper>

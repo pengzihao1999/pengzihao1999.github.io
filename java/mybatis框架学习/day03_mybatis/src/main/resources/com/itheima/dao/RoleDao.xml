@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace+id 确定唯一方法-->
+<mapper namespace="com.itheima.dao.RoleDao">
+    <!--通过resultMap进行数据库列名与实体类型的列名对应-->
+    <resultMap id="RoleMap" type="Role">
+        <id column="ID" property="ID"></id>
+        <result column="ROLE_NAME" property="roleName"></result>
+        <result column="ROLE_DESC" property="roleDesc"></result>
+        <collection property="userList" ofType="user">
+            <result column="id" property="id"></result>
+            <result column="username" property="username"></result>
+            <result column="birthday" property="birthday"></result>
+            <result column="sex" property="sex"></result>
+            <result column="address" property="address"></result>
+        </collection>
+    </resultMap>
+    <select id="m2m2" resultMap="RoleMap">
+        SELECT role.*,user.`address`,user.`birthday`,user.`id`,user.`sex`,user.`username`
+        FROM user_role LEFT JOIN USER
+        ON user_role.`UID`=user.`id`
+        LEFT JOIN role
+        ON user_role.`RID`=role.`ID`
+    </select>
+</mapper>

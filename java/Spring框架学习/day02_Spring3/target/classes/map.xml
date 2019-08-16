@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!--通过xml方式IOC DI 进行数据库的CRUD操作-->
+    <!--在容器中创建控制层对象 并注入accountService对象-->
+    <!--<bean id="AccountControl" class="com.itheima.Control.AccountControl">-->
+        <!--<property name="accountService" ref="AccountService"></property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash;在容器中创建业务层对象，并注入Dao层对象&ndash;&gt;-->
+    <!--<bean id="AccountService" class="com.itheima.Service.AccountService">-->
+        <!--<property name="accountDao" ref="AccountDao"></property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; AccountDao通过dbutils进行CRUD操作，需要一个连接池对象，-->
+        <!--且连接池对象需要带有对应的连接本地数据库的参数&ndash;&gt;-->
+
+    <!--现在还需要对配置文件依赖，我们能不能都用注解的方式进行配置-->
+    <context:component-scan base-package="com.itheima"></context:component-scan>
+    <bean id="AccountDao" class="com.itheima.Dao.AccountDao">
+        <property name="queryRunner" ref="queryruner"></property>
+    </bean>
+    <bean id="queryruner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <constructor-arg name="ds" ref="datasource"></constructor-arg>
+    </bean>
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/Spring"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+</beans>

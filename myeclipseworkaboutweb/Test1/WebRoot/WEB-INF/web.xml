@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Aservlet</servlet-name>
+    <servlet-class>Filter.Aservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Aservlet</servlet-name>
+    <url-pattern>/Aservlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>AFilter</filter-name>
+    <filter-class>Filter.AFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AFilter</filter-name>
+    <url-pattern>/Aservlet</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>filter2</display-name>
+    <filter-name>filter2</filter-name>
+    <filter-class>Filter.filter2</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>filter2</filter-name>
+    <url-pattern>/filter2</url-pattern>
+  </filter-mapping>
+</web-app>

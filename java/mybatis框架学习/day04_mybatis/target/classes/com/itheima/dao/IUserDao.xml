@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.IUserDao">
+    <cache/>
+    <resultMap id="UserMap" type="user">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="sex" property="sex"></result>
+        <result column="address" property="address"></result>
+        <collection property="accounts" ofType="Account">
+            <result column="ID" property="id"></result>
+            <result column="UID" property="uid"></result>
+            <result column="MONEY" property="money"></result>
+        </collection>
+    </resultMap>
+    <resultMap id="UserMap2" type="user">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="sex" property="sex"></result>
+        <result column="address" property="address"></result>
+        <collection property="accounts" ofType="Account" column="id" select="com.itheima.dao.AccountDao.findAccountByUid">
+            <result column="ID" property="id"></result>
+            <result column="UID" property="uid"></result>
+            <result column="MONEY" property="money"></result>
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="UserMap">
+          SELECT *
+          FROM USER LEFT JOIN account
+          ON user.`id`=account.`UID`
+    </select>
+    <select id="findAllByStep" resultMap="UserMap2">
+          SELECT *
+          FROM USER LEFT JOIN account
+          ON user.`id`=account.`UID`
+    </select>
+    <select id="findUserByID" resultType="User" parameterType="Integer" useCache="true">
+        select *
+        from USER
+        where id=#{aaa}
+    </select>
+    <select id="updateByID" parameterType="User">
+        update user set username=#{username},address=#{address} where id=${id}
+    </select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--1.导入Spring约束-->
+<!--2.配置Bean标签-->
+<!--2.1 Spring创建Bean标签中指定的对象，并放入Ioc容器中
+    其中 id获取对象的唯一标识 class是需要创建类的全限定类名-->
+    <!--<bean id="UserService" class="com.itheima.Service.UserService" scope="singleton"></bean>-->
+
+    <!--<bean id="UserDao" class="com.itheima.dao.UserDao" scope="prototype" init-method="init" destroy-method="destory"></bean>-->
+
+    <!--<bean id="BeanFactory" class="com.itheima.Factory.BeanFactory" ></bean>-->
+    <!--<bean id="UserDaofactory" class="com.itheima.dao.UserDao"-->
+    <!--factory-bean="BeanFactory" factory-method="getUserDao"></bean>-->
+
+    <!--<bean id="UserDaoSBFactory" class="com.itheima.Factory.StaticBeanFactory" factory-method="getUserDao">-->
+    <!--</bean>-->
+
+    <!--依赖注入-->
+    <!--<bean id="User" class="com.itheima.domain.User">-->
+        <!--<constructor-arg name="username" value="pzh"></constructor-arg>-->
+        <!--<constructor-arg name="password" value="1999"></constructor-arg>-->
+    <!--</bean>-->
+    <!--<bean id="User" class="com.itheima.domain.User">-->
+        <!--<property name="username" value="pzh"></property>-->
+        <!--<property name="password" value="123"></property>-->
+        <!--<property name="userlist">-->
+           <!--<list>-->
+               <!--<value>aaa</value>-->
+               <!--<value>bbb</value>-->
+               <!--<value>ccc</value>-->
+           <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <bean id="UserService" class="com.itheima.Service.UserService">
+        <property name="userdao" ref="UserDao"></property>
+
+    </bean>
+    <bean id="UserDao" class="com.itheima.dao.UserDao"></bean>
+</beans>

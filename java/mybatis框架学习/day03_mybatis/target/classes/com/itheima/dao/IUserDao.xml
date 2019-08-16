@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace+id 确定唯一方法-->
+<mapper namespace="com.itheima.dao.IUserDao">
+    <!--通过resultMap进行数据库列名与实体类型的列名对应-->
+    <resultMap id="UserMap" type="com.itheima.domain.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="sex" property="sex"></result>
+        <result column="address" property="address"></result>
+        <collection property="accountList" ofType="Account">
+            <result column="ID" property="id"></result>
+            <result column="UID" property="uid"></result>
+            <result column="MONEY" property="money"></result>
+        </collection>
+    </resultMap>
+    <resultMap id="UserMap2" type="user">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="sex" property="sex"></result>
+        <result column="address" property="address"></result>
+        <collection property="roleList" ofType="Role">
+            <id column="ID" property="ID"></id>
+            <id column="ROLE_NAME" property="roleName"></id>
+            <id column="ROLE_DESC" property="roleDesc"></id>
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="UserMap">
+        select * from user
+    </select>
+    <insert id="insert" parameterType="user">
+        <selectKey keyProperty="id" keyColumn="id" resultType="java.lang.Integer" order="AFTER">
+            SELECT last_insert_id();
+        </selectKey>
+        INSERT INTO USER(username,address,sex,birthday) VALUES(#{username},#{address},#{sex},#{birthday})
+    </insert>
+    <update id="update" parameterType="com.itheima.domain.User">
+        update user set username='${username}',address=#{address},sex=#{sex},birthday=#{birthday} where id=#{id}
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id=#{id}
+    </delete>
+    <select id="QueryById" parameterType="java.lang.Integer" resultType="com.itheima.domain.User">
+        SELECT * from USER WHERE id=#{id}
+    </select>
+    <select id="QueryByName" parameterType="java.lang.String" resultType="com.itheima.domain.User">
+        select * from USER WHERE username like #{uname}
+    </select>
+    <select id="QueryTotal" resultType="java.lang.Integer">
+        SELECT count(*) FROM USER
+    </select>
+    <select id="queryUserWithAccounts" resultMap="UserMap">
+        SELECT user.*,account.*
+        FROM USER,account
+        WHERE User.`id`=account.`UID`
+    </select>
+    <select id="m2m1" resultMap="UserMap2">
+      SELECT user.*,role.`ID`,role.`ROLE_NAME`,role.`ROLE_DESC`
+      FROM USER LEFT JOIN user_role
+      ON user.`id`=user_role.`UID`
+      LEFT JOIN role
+      ON role.`ID`=user_role.`RID`
+    </select>
+
+</mapper>

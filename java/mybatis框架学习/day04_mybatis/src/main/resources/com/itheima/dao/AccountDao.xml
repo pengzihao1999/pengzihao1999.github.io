@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.AccountDao">
+    <resultMap id="AccountMap" type="Account">
+        <id column="ID" property="id"></id>
+        <id column="UID" property="uid"></id>
+        <id column="MONEY" property="money"></id>
+        <association property="user" column="UID" javaType="User" select="com.itheima.dao.IUserDao.findUserByID">
+            <result column="id" property="id"></result>
+            <result column="username" property="username"></result>
+            <result column="birthday" property="birthday"></result>
+            <result column="sex" property="sex"></result>
+            <result column="address" property="address"></result>
+        </association>
+    </resultMap>
+    <select id="findAccountByUid" parameterType="Integer" resultType="Account">
+        SELECT * from account where UID=#{id}
+    </select>
+    <select id="findAllByStep" resultMap="AccountMap">
+          SELECT *
+	      FROM account LEFT JOIN USER
+	      ON account.`UID`=user.`id`
+    </select>
+
+</mapper>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Filter_apply1">
+        <property name="context-root" value="/Filter_apply1"/>
+        <property name="java-output-path" value="/Filter_apply1/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

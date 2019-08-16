@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;chat.jsp&apos; to &apos;WebRoot&apos;&#x0D;&#x0A;- Original project: &apos;chat&apos;&#x0D;&#x0A;- Destination element: &apos;WebRoot&apos;&#x0D;&#x0A;- Original element: &apos;chat.jsp&apos;" description="Copy file" element1="WebContent/chat.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1561453924776" target="/QQdemo/WebRoot" units="0" version="1.0"/>
+</session>

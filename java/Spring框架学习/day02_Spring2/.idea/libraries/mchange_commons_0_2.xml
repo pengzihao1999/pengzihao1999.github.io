@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mchange-commons-0.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/mchange-commons-0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

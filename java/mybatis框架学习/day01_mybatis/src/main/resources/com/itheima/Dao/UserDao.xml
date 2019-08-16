@@ -1,0 +1,5 @@
+ <mapper namespace="com.itheima.Dao.UserDao">
+    <select id="findAll" resultType="com.itheima.domain.User">
+        select * from user
+    </select>
+</mapper>

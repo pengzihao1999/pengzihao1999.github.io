@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;itcast-tools-1.4.2.jar&apos; to &apos;Webdemo2&apos;&#x0D;&#x0A;- Original project: &apos;webdemo1&apos;&#x0D;&#x0A;- Destination element: &apos;Webdemo2&apos;&#x0D;&#x0A;- Original element: &apos;itcast-tools-1.4.2.jar&apos;" description="Copy file" destination="=Webdemo2" element1="itcast-tools-1.4.2.jar" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1553585222199" units="0" version="1.0"/>
+</session>

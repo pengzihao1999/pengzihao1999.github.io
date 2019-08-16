@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 给domain包下的类起别名，不区分大小写-->
+    <typeAliases>
+        <package name="com.itheima.domain"></package>
+    </typeAliases>
+    <environments default="mysql">
+        <environment id="mysql">
+            <!-- 提交事物类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据库数据源 -->
+            <dataSource type="POOLED">
+                <!--配置四大要素 -->
+                <!--配置driver-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <!--配置路径-->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <!--配置username-->
+                <property name="username" value="root"/>
+                <!--配置password-->
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--resouce是通过Xml进行配置 class通过注解进行配置-->
+        <!--配置IUserdao的配置文件
+        <mapper resource="com/itheima/dao/IUserDao.xml"></mapper>-->
+        <!--注册dao包下的所有接口-->
+        <package name="com.itheima.dao"></package>
+    </mappers>
+</configuration>

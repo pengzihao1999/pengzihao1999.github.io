@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="PartcipantsSection">
+	</section>
+	<section name="org.topcased.search.uml2.ui.areas.UML2ModelSearchParticipantArea">
+	</section>
+	<section name="org.topcased.search.ecore.ui.areas.ECoreModelSearchParticipantArea">
+	</section>
+	<section name="QuerySection">
+	</section>
+</section>

@@ -1,0 +1,11 @@
+#Tue Jun 25 09:55:35 CST 2019
+TOMCAT_HOME=D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93
+TOMCAT_TEMP=D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93\\temp
+START_IS_DEBUG=false
+LIBRARY_PATH="C\:\\Program Files\\Java\\jdk1.8.0_201\\bin;D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93\\bin"
+TOMCAT_BASE=D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93
+ENDORSED_DIRS="D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93/common/endorsed"
+eclipse.preferences.version=1
+JDK_INSTALLATION_NAME=jdk1.8.0_201
+SERVER_ENABLEMENT=true
+JDK_HOME=C\:\\Program Files\\Java\\jdk1.8.0_201

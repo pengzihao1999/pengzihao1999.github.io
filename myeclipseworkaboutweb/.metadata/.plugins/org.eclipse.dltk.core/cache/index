@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" environment="org.eclipse.dltk.core.environment.localEnvironment">
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/calendar.js" timestamp="1555576352270" lastAccessTime="1555576354350"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jquery-1.5.1.js" timestamp="1555576352279" lastAccessTime="1555576354522"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jquery.datepick-zh-CN.js" timestamp="1555576352290" lastAccessTime="1555576354695"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jquery.datepick.js" timestamp="1555576352294" lastAccessTime="1555576354809"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jqueryvalidate/jquery.js" timestamp="1555576352298" lastAccessTime="1555576355323"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jqueryvalidate/jquery.validate.js" timestamp="1555576352301" lastAccessTime="1555576355453"/>
+  <entries path="D:/myeclipseworkaboutweb/CilentManager/WebRoot/jquery/jqueryvalidate/messages_cn.js" timestamp="1555576352304" lastAccessTime="1564017949576"/>
+  <entries path="D:/myeclipseworkaboutweb/bookstore/WebRoot/menu/mymenu.js" timestamp="1557217004821" lastAccessTime="1557217005953"/>
+</cache:CacheIndex>

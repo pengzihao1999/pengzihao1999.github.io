@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="websockets">
+        <property name="context-root" value="/websockets"/>
+        <property name="java-output-path" value="/websockets/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="QQdemo"
+  id="myeclipse.1561439727747"
+  context-root="/QQdemo"
+  j2ee-spec="6.0"
+  archive="QQdemo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

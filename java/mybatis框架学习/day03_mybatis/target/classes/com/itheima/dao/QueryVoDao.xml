@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace+id 确定唯一方法-->
+<mapper namespace="com.itheima.dao.QueryVoDao">
+    <!--实现动态sql的编写-->
+    <select id="QueryUserByVo" resultType="user" parameterType="QueryVo">
+        SELECT * from user
+        <where>
+            <if test="user.username !=null ">
+                and username like #{user.username}
+            </if>
+            <if test="user.sex !=null ">
+                and sex = #{user.sex}
+            </if>
+        </where>
+    </select>
+    <select id="QueryUserByList" resultType="user" parameterType="QueryVo">
+        select * from USER
+        <where>
+            <if test="integers!=null and integers.size()>0">
+                <foreach collection="integers" item="id" open="and id in (" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>

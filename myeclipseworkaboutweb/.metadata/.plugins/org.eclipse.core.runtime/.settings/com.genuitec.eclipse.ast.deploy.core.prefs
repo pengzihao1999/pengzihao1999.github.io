@@ -1,0 +1,14 @@
+#Wed Jul 24 10:05:34 CST 2019
+tomcat7Server.xixihaha.deployIsOverProject=false
+tomcat7Server.xixihaha.contextRoot=/xixihaha
+tomcat7Server.xixihaha.isDeployed=true
+tomcat7Server.xixihaha.shouldBackup=false
+tomcat7Server.xixihaha.noFileCopy=false
+tomcat7Server.xixihaha.type=WebDeployment
+tomcat7Server.xixihaha.shouldOverwrite=false
+eclipse.preferences.version=1
+tomcat7Server.xixihaha.IEARProjectName=
+tomcat7Server.xixihaha.isExploded=true
+tomcat7Server.xixihaha.deploymentPath=D\:\\eclipse\\apache-tomcat-7.0.93-windows-x64\\apache-tomcat-7.0.93\\webapps\\xixihaha
+tomcat7Server.xixihaha.isUptoDate=true
+tomcat7Server.xixihaha.altContextRoot=
