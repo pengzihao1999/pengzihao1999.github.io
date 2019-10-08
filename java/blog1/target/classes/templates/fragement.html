@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--头部-->
+<!--导航-->
+<nav th:fragment="header_nav(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>首页</a>
+            <a href="#" th:href="@{/blog/types}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
+            <a href="#" th:href="@{/blog/tags}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
+            <a href="#" th:href="@{/blog/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
+            <a href="#" th:href="@{/blog/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
+
+                <div class="right m-item item m-mobile-hide">
+                    <form method="get" id="querypost" th:action="@{/blog/query}">
+                    <div class="ui icon inverted transparent input m-margin-tb-tiny">
+                        <input type="text" name="query" placeholder="查询博客信息">
+                        <i id="blogsearch" class="search link icon"></i>
+                    </div>
+                    </form>
+                </div>
+
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+    <div style="text-align: center">
+    <span > 本站全部博客由我的csdn博客搬运过来__^*^<a href="https://blog.csdn.net/weixin_43752167"><span style="color: red">点击这里跳转我的csdn博客首页</span></a></span>
+    </div>
+</nav>
+
+<!--尾部导航-->
+<footer th:fragment="foot_nav" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img th:src="@{/images/wechat.jpg}" class="ui rounded image" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >个性签名</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">自律的顶端是享受孤独</a>
+                    <!--<a href="#" class="item m-text-thin">用户故事（User Story）</a>-->
+                    <!--<a href="#" class="item m-text-thin">用户故事（User Story）</a>-->
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">Email：pzh_99@163.com</a>
+                    <a href="#" class="item m-text-thin">QQ：916811138</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">Blog</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2018 - 2019  Designed by zihao</p>
+    </div>
+
+</footer>
+
+</html>

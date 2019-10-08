@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?characterEncoding=utf-8&&serverTimezone=GMT%2B8
+    username: root
+    password: dsj!123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    root: info
+    com.lrm: debug
+  file: log/blog-dev.log
+server:
+  port: 8080
+
+

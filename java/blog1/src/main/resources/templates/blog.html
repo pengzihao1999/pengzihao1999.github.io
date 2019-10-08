@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客详情</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+  <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+  <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+  <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+  <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+
+  <!--导航-->
+  <nav th:replace="~{fragement :: header_nav(1)}" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+    <div class="ui container">
+      <div class="ui inverted secondary stackable menu">
+        <h2 class="ui teal header item">Blog</h2>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
+        <div class="right m-item item m-mobile-hide">
+          <div class="ui icon inverted transparent input m-margin-tb-tiny">
+            <input type="text" placeholder="Search....">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+      <i class="sidebar icon"></i>
+    </a>
+  </nav>
+
+  <!--中间内容-->
+  <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+      <div class="ui top attached segment">
+        <div class="ui horizontal link list">
+          <div class="item">
+            <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">李仁密</a></div>
+          </div>
+          <div class="item">
+            <i class="calendar icon"></i> <span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm:ss')}"></span>
+          </div>
+          <div class="item">
+            <i class="eye icon" ></i> <span th:text="${blog.views}"></span>
+          </div>
+        </div>
+      </div>
+      <div class="ui  attached padded segment">
+        <!--内容-->
+        <div class="ui right aligned basic segment">
+          <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
+        </div>
+
+        <h2 class="ui center aligned header" th:text="${blog.title}">关于刻意练习的清单</h2>
+        <br>
+
+        <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${htmlContent}">
+        </div>
+
+        <!--标签-->
+        <div class="m-padded-lr-responsive">
+          <div class="ui basic teal left pointing label" th:each="tag : ${blog.tagList}" th:text="${tag.name}">方法论</div>
+        </div>
+
+        <!--赞赏-->
+        <div class="ui center aligned basic segment">
+          <button id="payButton" class="ui orange basic circular button">赞赏</button>
+        </div>
+        <div class="ui payQR flowing popup transition hidden">
+          <div class="ui orange basic label">
+            <div class="ui images" style="font-size: inherit !important;">
+              <div class="image">
+                <img src="../static/images/wechat.jpg" th:src="@{/images/zhifubao.png}" alt="" class="ui rounded bordered image" style="width: 120px">
+                <div>支付宝</div>
+              </div>
+              <div class="image">
+                <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded bordered image" style="width: 120px">
+                <div>微信</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ui attached positive message">
+        <!--博客信息-->
+        <div class="ui middle aligned grid">
+          <div class="eleven wide column">
+            <ui class="list">
+              <li th:text="${blog.user.nickname}">作者：李仁密（联系作者）</li>
+              <li>发表时间：<span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm:ss')}"></span></li>
+              <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
+              <li>公众号转载：请在文末添加作者二维码</li>
+            </ui>
+          </div>
+          <div class="five wide column">
+            <img src="../static/images/wechat.jpg" alt="" class="ui right floated rounded bordered image" style="width: 110px">
+          </div>
+        </div>
+      </div>
+      <div id="comment-container" class="ui bottom attached segment">
+        <!--留言区域列表-->
+        <!--<div class="ui teal segment">-->
+          <!--<div class="ui threaded comments">-->
+            <!--<h3 class="ui dividing header">Comments</h3>-->
+            <!--<div class="comment">-->
+              <!--<a class="avatar">-->
+                <!--<img src="https://unsplash.it/100/100?image=1005">-->
+              <!--</a>-->
+              <!--<div class="content">-->
+                <!--<a class="author">Matt</a>-->
+                <!--<div class="metadata">-->
+                  <!--<span class="date">Today at 5:42PM</span>-->
+                <!--</div>-->
+                <!--<div class="text">-->
+                  <!--How artistic!-->
+                <!--</div>-->
+                <!--<div class="actions">-->
+                  <!--<a class="reply">回复</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="comment">-->
+              <!--<a class="avatar">-->
+                <!--<img src="https://unsplash.it/100/100?image=1005">-->
+              <!--</a>-->
+              <!--<div class="content">-->
+                <!--<a class="author">Elliot Fu</a>-->
+                <!--<div class="metadata">-->
+                  <!--<span class="date">Yesterday at 12:30AM</span>-->
+                <!--</div>-->
+                <!--<div class="text">-->
+                  <!--<p>This has been very useful for my research. Thanks as well!</p>-->
+                <!--</div>-->
+                <!--<div class="actions">-->
+                  <!--<a class="reply">回复</a>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="comments">-->
+                <!--<div class="comment">-->
+                  <!--<a class="avatar">-->
+                    <!--<img src="https://unsplash.it/100/100?image=1005">-->
+                  <!--</a>-->
+                  <!--<div class="content">-->
+                    <!--<a class="author">Jenny Hess</a>-->
+                    <!--<div class="metadata">-->
+                      <!--<span class="date">Just now</span>-->
+                    <!--</div>-->
+                    <!--<div class="text">-->
+                      <!--Elliot you are always so right :)-->
+                    <!--</div>-->
+                    <!--<div class="actions">-->
+                      <!--<a class="reply">回复</a>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="comment">-->
+              <!--<a class="avatar">-->
+                <!--<img src="https://unsplash.it/100/100?image=1005">-->
+              <!--</a>-->
+              <!--<div class="content">-->
+                <!--<a class="author">Joe Henderson</a>-->
+                <!--<div class="metadata">-->
+                  <!--<span class="date">5 days ago</span>-->
+                <!--</div>-->
+                <!--<div class="text">-->
+                  <!--Dude, this is awesome. Thanks so much-->
+                <!--</div>-->
+                <!--<div class="actions">-->
+                  <!--<a class="reply">回复</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="ui form">-->
+          <!--<div class="field">-->
+            <!--<textarea name="content" placeholder="请输入评论信息..."></textarea>-->
+          <!--</div>-->
+          <!--<div class="fields">-->
+            <!--<div class="field m-mobile-wide m-margin-bottom-small">-->
+              <!--<div class="ui left icon input">-->
+                <!--<i class="user icon"></i>-->
+                <!--<input type="text" name="nickname" placeholder="姓名">-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="field m-mobile-wide m-margin-bottom-small">-->
+              <!--<div class="ui left icon input">-->
+                <!--<i class="mail icon"></i>-->
+                <!--<input type="text" name="email" placeholder="邮箱">-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="field  m-margin-bottom-small m-mobile-wide">-->
+              <!--<button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      </div>
+    </div>
+  </div>
+
+  <div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+    <ol class="js-toc">
+
+    </ol>
+  </div>
+
+  <div id="qrcode" class="ui wechat-qr flowing popup transition hidden "style="width: 130px !important;">
+    <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+  </div>
+
+
+  <br>
+  <br>
+  <!--底部footer-->
+  <footer th:replace="~{fragement :: foot_nav}" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+      <div class="ui inverted divided stackable grid">
+        <div class="three wide column">
+          <div class="ui inverted link list">
+            <div class="item">
+              <img th:src="@{/images/wechat.jpg}" class="ui rounded image" style="width: 110px">
+            </div>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced " >最新博客</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+            <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+            <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item m-text-thin">Email：pzh_99@163.com</a>
+            <a href="#" class="item m-text-thin">QQ：916811138</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced ">Blog</h4>
+          <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
+        </div>
+      </div>
+      <div class="ui inverted section divider"></div>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2018 - 2019  Designed by zihao</p>
+    </div>
+
+  </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+  
+<script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/tocbot/tocbot.min.js"></script>
+<script src="../static/lib/qrcode/qrcode.min.js"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+
+
+
+
+  <script>
+
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#payButton').popup({
+      popup : $('.payQR.popup'),
+      on : 'click',
+      position: 'bottom center'
+    });
+
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '.js-toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.js-toc-content',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3',
+    });
+
+    $('.toc.button').popup({
+      popup : $('.toc-container.popup'),
+      on : 'click',
+      position: 'left center'
+    });
+
+    $('.wechat').popup({
+      popup : $('.wechat-qr'),
+      position: 'left center'
+    });
+
+    var qrcode = new QRCode("qrcode", {
+      text: "http://jindo.dev.naver.com/collie",
+      width: 110,
+      height: 110,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+    
+    $('#toTop-button').click(function () {
+      $(window).scrollTo(0,500);
+    });
+
+
+    var waypoint = new Waypoint({
+      element: document.getElementById('waypoint'),
+      handler: function(direction) {
+        if (direction == 'down') {
+          $('#toolbar').show(100);
+        } else {
+          $('#toolbar').hide(500);
+        }
+        console.log('Scrolled to waypoint!  ' + direction);
+      }
+    })
+  </script>
+</body>
+</html>

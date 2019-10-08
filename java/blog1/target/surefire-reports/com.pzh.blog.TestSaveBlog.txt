@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.pzh.blog.TestSaveBlog
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.172 s <<< FAILURE! - in com.pzh.blog.TestSaveBlog
+saveBlog(com.pzh.blog.TestSaveBlog)  Time elapsed: 0.172 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.pzh.blog.TestSaveBlog.saveBlog(TestSaveBlog.java:36)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.pzh.blog.TestSaveBlog.saveBlog(TestSaveBlog.java:36)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`blog`.`t_blog`, CONSTRAINT `FK292449gwg5yf7ocdlmswv9w4j` FOREIGN KEY (`type_id`) REFERENCES `t_type` (`id`))
+	at com.pzh.blog.TestSaveBlog.saveBlog(TestSaveBlog.java:36)
+
